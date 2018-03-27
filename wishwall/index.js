@@ -2,7 +2,7 @@ $(document).ready(function() {
     idContentchange();
     indexContentchange();
     clickHeart();
-    // time();
+    clickChangeImg();
 });
 // 用户界面心愿、评论切换
 function idContentchange(){
@@ -19,7 +19,6 @@ function idContentchange(){
 
 
 // 许愿主页热门许愿、本周最新、热门话题
-
 function indexContentchange(){
     var $indexContent_li =$(".index_tab_menu ul li");
     $indexContent_li.click(function(){
@@ -60,6 +59,26 @@ function clickHeart(){
     });
 }
 
+//点击更换头部背景和页面背景色,个人愿望详情页愿望背景
+function clickChangeImg(){
+    $(".bgchange1>img").live("click",function (){
+            $('.bg>img').attr('src','img/bgimg1.png');
+            $('html').css("background-color","#ccf0ff");
+            $('.bgc').css("background-color","#ccf0ff");
+    });
+    $(".bgchange2>img").live("click",function (){
+            $('.bg>img').attr('src','img/bgimg2.png');
+            $('html').css("background-color","#fbeee5");
+            $('.bgc').css("background-color","#fbeee5");
+    });
+    $(".bgchange3>img").live("click",function (){
+            $('.bg>img').attr('src','img/bgimg3.png');
+            $('html').css("background-color","#fbf3c5");
+            $('.bdc').css("background-color","#fbf3c5");
+    });
+}
+
+
 
 //点击更换图标事件
 function changeTypeIcon(){
@@ -92,13 +111,13 @@ function changeTypeIcon(){
         }
     );
 }
-
-
-
-
-
-
-
+$(".message").each(function(){
+  var maxwidth=61;
+  if($(this).text().length > maxwidth){
+    $(this).text($(this).text().substring(0,maxwidth));
+    $(this).html($(this).html()+'...');
+  }
+});
 
 // var wordLimit=function(){
 //     $(".message").each(function(){

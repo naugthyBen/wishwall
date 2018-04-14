@@ -3,6 +3,11 @@ $(document).ready(function() {
     indexContentchange();
     clickHeart();
     clickChangeImg();
+    // clickdel();
+    // nodel();
+    // yesdel();
+    hideuser();
+    // hidewishuser();
 });
 // 用户界面心愿、评论切换
 function idContentchange(){
@@ -31,7 +36,154 @@ function indexContentchange(){
     })
 }
 
+var clickdel=(function clickdel(){
+    var fn;   
+    $(".del").bind("click",function abc(){
+        $(".delif").show();
+        $(".delBox").show();
+        console.log($(this).parent().parent(".bgc"));
+        function del(){
+            $(this).parent().parent(".bgc").hide();
+        }
+        fn=del;
+        console.log(fn);
+        // return {
+        //     del:del
+        // }
+    });
+   function nodel(){
+        $(".nodel").bind('click', function() {
+            $(".delif").hide();
+            $(".delBox").hide();
+        });
+    }
+    function yesdel(){
+        $(".yesdel").bind('click',function (){
+            fn();
+           $(".delif").hide();
+           $(".delBox").hide();
+           
+           // console.log(fn());
+           console.log("3");
+        });
+    }
+    return{
+        nodel:nodel,
+        yesdel:yesdel
+    }
+})();
+clickdel.nodel();
+clickdel.yesdel();
+// 
+// 
+// 
+// function clickdel(){
+//     $(".del").bind("click",function abc(){
+//         $(".delif").show();
+//         $(".delBox").show();
+//         console.log($(this).parent().parent(".bgc"));
+//         function del(){
+//             $(this).parent().parent(".bgc").hide();
+//         }
+//         // fn=del;
+//         // console.log(fn);
+//         return {
+//             del:del
+//         }
+//     });
+// }
+// function nodel(){
+//     $(".nodel").bind('click', function() {
+//         $(".delif").hide();
+//         $(".delBox").hide();
+//     });
+// }
+// function yesdel(){
+//     $(".yesdel").bind('click',function (){
+//        $(".delif").hide();
+//        $(".delBox").hide();
+//        // console.log(fn());
+//        // console.log("3");
+//        // $(".del").parent().parent(".bgc").hide();
+//     });
+// }
 
+// $(function (){
+//     $(".hideuser").toggle( function() {
+//         $(this).toggle();         
+//     },function(){
+//         $(this).toggle();
+//     })
+// });
+
+
+
+//点击更换图标事件
+// function changeTypeIcon(){
+//     $(".wishtype_message").click(
+//         function (){
+//             var tnext=$(this).next();
+//             var tyepLabel=tnext.attr('id');
+//             if(tyepLabel=='sayhi_label'){
+//                 tnext.css('background-image','url(./img/sayhi_type_yes.png)');
+//                 $("#pray_label").css('background-image','url(./img/pray_type_no.png)');
+//                 $("#complain_label").css('background-image','url(./img/complain_type_no.png)');
+//                 $("#default_label").css('background-image','url(./img/default_type_no.png)');
+//             }else if(tyepLabel=='pray_label'){
+//                 tnext.css('background-image','url(./img/pray_type_yes.png)');
+//                 $("#sayhi_label").css('background-image','url(./img/sayhi_type_no.png)');
+//                 $("#complain_label").css('background-image','url(./img/complain_type_no.png)');
+//                 $("#default_label").css('background-image','url(./img/default_type_no.png)');
+//             }else if(tyepLabel=='complain_label'){
+//                 tnext.css('background-image','url(./img/complain_type_yes.png)');
+//                 $("#sayhi_label").css('background-image','url(./img/sayhi_type_no.png)');
+//                 $("#pray_label").css('background-image','url(./img/pray_type_no.png)');
+//                 $("#default_label").css('background-image','url(./img/default_type_no.png)');
+//             }else if(tyepLabel=='default_label'){
+//                 tnext.css('background-image','url(./img/default_type_yes.png)');
+//                 $("#sayhi_label").css('background-image','url(./img/sayhi_type_no.png');
+//                 $("#pray_label").css('background-image','url(./img/pray_type_no.png)');
+//                 $("#complain_label").css('background-image','url(./img/complain_type_no.png)');
+//             }
+            
+//         }
+//     );
+// }
+
+//匿名评论
+function hideuser(){
+    $(".hideuser").bind('click', function() {
+        if($(".hideformbox").is(":visible")){
+            $(".hideformbox").hide();
+            $(".hideuser").removeClass("hidename");           
+        }else{
+            $(".hideformbox").show();
+            $(".hideuser").addClass("hidename");  
+        }
+    });
+}
+//匿名发布
+// function hidewishuser(){
+//     $(".hidewishuser").bind('click', function() {
+//         let a=1;
+//         console.log("1");
+//         if($(".cancelhide").is(":visible")){
+//             // $(".choosedhide").hide();
+//             $(".canceledhide").show(600);
+//             $(".hidewishuser").addClass("hidename");         
+//         }else{
+//             $(".canceledhide").show(600);
+//             // $(".choosedhide").hide();
+//             $(".hidewishuser").removeClass("hidename");  
+//         }
+//         a=2;
+//     });
+// }
+$(".hidewishuser").toggle(function(){
+    $("choosedhide").show();
+},function(){
+    $("canceledhide").show();
+});
 //点赞
 function clickHeart(){
     $(".love>img").live("click",function (){
@@ -58,6 +210,7 @@ function clickHeart(){
         // });
     });
 }
+
 
 //点击更换头部背景和页面背景色,个人愿望详情页愿望背景
 function clickChangeImg(){
@@ -111,13 +264,13 @@ function changeTypeIcon(){
         }
     );
 }
-$(".message").each(function(){
-  var maxwidth=61;
-  if($(this).text().length > maxwidth){
-    $(this).text($(this).text().substring(0,maxwidth));
-    $(this).html($(this).html()+'...');
-  }
-});
+// $(".message").each(function(){
+//   var maxwidth=61;
+//   if($(this).text().length > maxwidth){
+//     $(this).text($(this).text().substring(0,maxwidth));
+//     $(this).html($(this).html()+'...');
+//   }
+// });
 
 // var wordLimit=function(){
 //     $(".message").each(function(){

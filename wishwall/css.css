@@ -97,14 +97,19 @@ section{
 .comment img{
 	width: 1rem;
 }
-.message{
+.message,.comment{
 	width: 100%;
 	overflow : hidden;
 	text-overflow: ellipsis;
 	display: -webkit-box;
-	-webkit-line-clamp: 4;
 	-webkit-box-orient: vertical;
 	white-space: normal;
+}
+.message{
+	-webkit-line-clamp: 4;
+}
+.comment{
+	-webkit-line-clamp: 2;
 }
 .interaction{
 	padding: .9rem 1rem 0 6rem;
@@ -287,9 +292,6 @@ section{
 .yon span{
 	flex: 1;
 }
-
-
-
 /* 个人界面 */
 .idpage{
 	font-size: 50px;
@@ -408,6 +410,7 @@ section{
 	border: none;
 	width: 100%;
 	height: 4rem;
+	font-size: 2.5rem;
 }
 .hidewishuser{
 	padding: 0 3rem;
@@ -445,7 +448,67 @@ section{
 	height: 5rem;
 	background-color: gray;
 }
-
+/* 许愿界面蒙版 */
+.mengban{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-color:#000;
+	opacity:.8;
+	filter:alpha(opacity=60);
+	top:0;
+	left:0;
+	z-index:99;
+	display:none;
+}
+.niming{
+	position: absolute;
+	top: 4rem;
+	right: 1.5rem;
+	width: 35rem;
+	height: 20rem;
+}
+.niming .quanquan,.uncom .quanquan{
+	float: right;
+	width: 6rem;
+	height: 6rem;
+	border-radius: 3rem;
+	background-color: #fff;
+}
+.exp{
+	width: 30rem;
+	height: 10rem;
+	color: #fff;
+}
+.remen{
+	position: absolute;
+	display: none;
+	top: 36rem;
+	width: 30rem;
+	height: 6rem;
+}
+.remen .quanquan{
+	width: 20rem;
+	height: 6rem;
+	border-radius: 3rem;
+	background-color: #fff;
+}
+.uncom{
+	position: absolute;
+	display: none;
+	right: 0;
+	top: 35rem;
+	width: 30rem;
+	height: 5rem;
+}
+.getit{
+	margin: 0 auto;
+	margin-top: 80rem;
+	width: 20rem;
+	height: 6rem;
+	background-color: #fff;
+	text-align: center;
+}
 /* 许愿界面 */
 /* label.to{
 	display: inline-block;

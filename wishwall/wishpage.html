@@ -7,29 +7,39 @@
 	<link rel="stylesheet" href="css.css">
 </head>
 <body class="idpage">
-	<div class="target">
-		<form action="" method="">
-			<div class="targetto" style="border-bottom: 1px solid #000;"><span class="targett">To: </span><span class="targetip"><input  type="text"></span></div>
-			<div class="targetto"><span class="targetf">Form: </span><span class="targetip"><input  type="text"></span><span class="hidewishuser">匿</span></div>
-		</form>
+	<div class="wrap">
+		<div class="target">
+			<form action="" method="">
+				<div class="targetto" style="border-bottom: 1px solid #000;"><span class="targett">To: </span><span class="targetip"><input  type="text"></span></div>
+				<div class="targetto"><span class="targetf">Form: </span><span class="targetip"><input  type="text"></span><span class="hidewishuser">匿</span></div>
+			</form>
+		</div>
+		<div class="choosedhide">你已选择匿名发布</div>
+		<div class="canceledhide">你已取消匿名发布</div>
+		<div class="wishcont">
+			<form action="" method="">
+				<textarea name="" id="" cols="50" rows="10" value="快来许个愿望吧"></textarea>
+			</form>
+		</div>
+		<div class="hottopic">
+			<div style="text-align: left;">#热门话题#<span><img align="right" src="img/comment.png" alt=""></span></div>
+		</div>
+		<div class="wishtype">
+			<div class="wishtype_message"><img src="img/bare.png" alt=""><span>我要表白</span></div>
+			<div class="wishtype_message"><img src="img/bless.png" alt=""><span>我要祝福</span></div>
+			<div class="wishtype_message"><img src="img/tweet.png" alt=""><span>我要吐槽</span></div>
+			<div class="wishtype_message"><img src="img/default.png" alt=""><span>默认许愿</span></div>
+			<div class="wishsubmit"><input class="wishsubmit" type="submit" value="许愿"></input></div>
+		</div>
 	</div>
-	<div class="choosedhide">你已选择匿名发布</div>
-	<div class="canceledhide">你已取消匿名发布</div>
-	<div class="wishcont">
-		<form action="" method="">
-			<textarea name="" id="" cols="50" rows="10" value="快来许个愿望吧"></textarea>
-		</form>
+
+	<div class="mengban">
+		<div class="niming"><div class="quanquan"></div><div class="exp">选择是否匿名发布，默认不匿名</div></div>
+		<div class="remen"><div class="quanquan"></div><div class="exp">选择是否参与热文话题，默认不参与热门话题</div></div>
+		<div class="uncom"><div class="quanquan"></div><div class="exp">选择是否允许他人评论你的愿望，默认允许</div></div>
+		<div class="getit">我知道了</div>
 	</div>
-	<div class="hottopic">
-		<div style="text-align: left;">#热门话题#<span><img align="right" src="img/comment.png" alt=""></span></div>
-	</div>
-	<div class="wishtype">
-		<div class="wishtype_message"><img src="img/bare.png" alt=""><span>我要表白</span></div>
-		<div class="wishtype_message"><img src="img/bless.png" alt=""><span>我要祝福</span></div>
-		<div class="wishtype_message"><img src="img/tweet.png" alt=""><span>我要吐槽</span></div>
-		<div class="wishtype_message"><img src="img/default.png" alt=""><span>默认许愿</span></div>
-		<div class="wishsubmit"><input class="wishsubmit" type="submit" value="许愿"></input></div>
-	</div>
+	
 	<!-- <div>
 		<form action="" method="" id="sentForm">
 			<label for="to" class="to">To:</label>
@@ -55,7 +65,19 @@
 			</div>
 		</form>
 	</div> -->
+
 </body>
 <script src="jquery.js"></script>
 <script src="index.js"></script>
+<script>
+	window.onload = function(){
+    if(!localStorage.pageLoadCount){
+        localStorage.pageLoadCount = 0;
+    }
+    localStorage.pageLoadCount = parseInt(localStorage.pageLoadCount)+1;
+}
+// if(localStorage.pageLoadCount>0){
+//   $('.mengban').hide();
+// }
+</script>
 </html>

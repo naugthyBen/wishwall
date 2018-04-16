@@ -3,13 +3,14 @@ $(document).ready(function() {
     indexContentchange();    // 许愿主页热门许愿、本周最新、热门话题
     clickHeart();          //点赞
     clickChangeImg();    //点击更换头部背景图
-    // clickdel();
-    // nodel();
-    // yesdel();
+    clickdel();     //删除评论
+    nodel();
+    yesdel();
     hideuser();   //匿名评论
     hidewishuser();//匿名发布
     getit();  //我知道了
     limit();
+    uncomment();
 });
 // 用户界面心愿、评论切换
 function idContentchange(){
@@ -36,117 +37,118 @@ function indexContentchange(){
             .siblings().hide();
     })
 }
-
-// var clickdel=(function clickdel(){
-//     var fn;   
-//     $(".del").bind("click",function abc(){
-//         $(".delif").show();
-//         $(".delBox").show();
-//         console.log($(this).parent().parent(".bgc"));
-//         function del(){
-//             $(this).parent().parent(".bgc").hide();
-//         }
-//       return del;
-//     });
-//     fn = del;
-//    function nodel(){
-//         $(".nodel").bind('click', function() {
-//             $(".delif").hide();
-//             $(".delBox").hide();
-//         });
-//     }
-//     function yesdel(){
-//         $(".yesdel").bind('click',function (){
-//             fn();
-//            $(".delif").hide();
-//            $(".delBox").hide();
-           
-//            // console.log(fn());
-//            console.log("3");
-//         });
-//     }
-//     return{
-//         nodel:nodel,
-//         yesdel:yesdel
-//     }
-// })();
-// clickdel.nodel();
-// clickdel.yesdel();
-
-
-
-// function clickdel(){
-//     var delt=( $(".del").bind("click",function (){
-//         $(".delif").show();
-//         $(".delBox").show();
-//         // console.log($(this).parent().parent(".bgc"));
-//         return function del(){
-//             $(this).parent().parent(".bgc").hide();
-//         }
-//     })();
-//     fn=del;
-// }
-
-// // var clickd=clickdel();
-// function nodel(){
-//     $(".nodel").bind('click', function() {
-//         $(".delif").hide();
-//         $(".delBox").hide();
-//     });
-// }
-
-// function yesdel(){
-//     $(".yesdel").bind('click',function (){
-//        $(".delif").hide();
-//        $(".delBox").hide();
-//        fn();
-//     });
-// }
+//删除评论
+var fn;
+let $delif=$(".delif");
+let $delBox=$(".delBox");
+function clickdel(){
+    var delt= $(".del").bind("click",function (){
+        delif.show();
+        delBox.show();
+        _self=this;
+        return fn =function del(){
+            $(_self).parent().parent(".bgc").hide();
+        }
+    });    
+}
+function nodel(){
+    $(".nodel").bind('click', function() {
+        delif.hide();
+        delBox.hide();
+    });
+}
+function yesdel(){
+    $(".yesdel").bind('click',function (){
+       delif.hide();
+       delBox.hide();
+       console.log(fn)
+       fn();
+    });
+}
 
 
 //匿名评论
 function hideuser(){
-    $(".hideuser").bind('click', function() {
-        if($(".hideformbox").is(":visible")){
-            $(".hideformbox").hide();
-            $(".hideuser").removeClass("hidename");           
+    let $hideformbox=$(".hideformbox");
+    let $hideuser=$(".hideuser");
+    hideuser.bind('click', function() {
+        if(hideformbox.is(":visible")){
+            hideformbox.hide();
+            hideuser.removeClass("hidename");           
         }else{
-            $(".hideformbox").show();
-            $(".hideuser").addClass("hidename");  
+            hideformbox.show();
+            hideuser.addClass("hidename");  
         }
     });
 }
 //匿名发布
 function hidewishuser(){
-    $(".hidewishuser").toggle( function() {
-            $(".choosedhide").show();
-            $(".canceledhide").hide();
-            $(".hidewishuser").addClass("hidename"); 
+    let $hidewishuser=$(".hidewishuser");
+    let $choosedniming=$(".choosedniming");
+    let $cancelniming=$(".cancelniming");
+    $hidewishuser.toggle( function() {
+            $choosedniming.show();
+            $cancelniming.hide();
+            $hidewishuser.addClass("hidename"); 
             setTimeout(function(){
-                $(".choosedhide").hide();
-                $(".canceledhide").hide();
+                $choosedniming.hide();
+                $cancelniming.hide();
             }, 1000);        
         },function(){
-            $(".canceledhide").show();
-            $(".choosedhide").hide();
-            $(".hidewishuser").removeClass("hidename");  
+            $cancelniming.show();
+            $choosedniming.hide();
+            $hidewishuser.removeClass("hidename");  
              setTimeout(function(){
-                $(".choosedhide").hide();
-                $(".canceledhide").hide();
+                $choosedniming.hide();
+                $cancelniming.hide();
+            }, 1000);  
+    });
+}
+//是否允许评论
+function uncomment(){
+    let $chooseduncom=$(".chooseduncom");
+    let $canceluncom=$(".canceluncom");
+    let $showuncom=$(".showuncom");
+    let $inp=$(".inp");
+    let $uncommentImg=$(".uncomment>img");
+
+   $(".uncomment").toggle( function() {
+            $chooseduncom.show();
+            $canceluncom.hide();
+            $showuncom.show();
+            $inp.hide();
+            $uncommentImg.attr("src","img/uncomment.png");
+            // $(".uncomment").addClass("hidename"); 
+            setTimeout(function(){
+                $chooseduncom.hide();
+                $canceluncom.hide();
+            }, 1000);        
+        },function(){
+            $canceluncom.show();
+            $chooseduncom.hide();
+            $showuncom.hide();
+            $inp.show();
+            $uncommentImg.attr("src","img/comment.png");
+            // $(".uncomment").removeClass("hidename");  
+             setTimeout(function(){
+                $chooseduncom.hide();
+                $canceluncom.hide();
             }, 1000);
         
     });
 }
 //我知道了
 function getit(){
+    let $remen=$(".remen");
+    let $uncom=$(".uncom");
     $(".getit").toggle(function(){
         $(".niming").hide();
-        $(".remen").show();
+        $remen.show();
     },function(){
-        $(".remen").hide();
-        $(".uncom").show();
+        $remen.hide();
+        $uncom.show();
     },function(){
-        $(".uncom").hide();
+        $uncom.hide();
         $(".mengban").hide();
     })
 }
@@ -157,7 +159,14 @@ function limit(){
     });
 }
 
-// 详情页不许评论
+//获取热门话题内容
+// function wishhottopic(){
+//     $(".wishhottopic").text();
+//     $(".wishhottopic").bind("click",function (){
+//         $
+//     });
+// }
+
 //点赞
 function clickHeart(){
     $(".love>img").live("click",function (){
@@ -179,24 +188,25 @@ function clickHeart(){
 
 //点击更换头部背景和页面背景色,个人愿望详情页愿望背景
 function clickChangeImg(){
+    let $bgImg=$('.bg>img');
+    let $html= $('html');
+    let $bgc=$('.bgc');
     $(".bgchange1>img").live("click",function (){
-            $('.bg>img').attr('src','img/bgimg1.png');
-            $('html').css("background-color","#ccf0ff");
-            $('.bgc').css("background-color","#ccf0ff");
+            $bgImg.attr('src','img/bgimg1.png');
+            $html.css("background-color","#ccf0ff");
+            $bgc.css("background-color","#ccf0ff");
     });
     $(".bgchange2>img").live("click",function (){
-            $('.bg>img').attr('src','img/bgimg2.png');
-            $('html').css("background-color","#fbeee5");
-            $('.bgc').css("background-color","#fbeee5");
+            $bgImg.attr('src','img/bgimg2.png');
+            $html.css("background-color","#fbeee5");
+            $bgc.css("background-color","#fbeee5");
     });
     $(".bgchange3>img").live("click",function (){
-            $('.bg>img').attr('src','img/bgimg3.png');
-            $('html').css("background-color","#fbf3c5");
-            $('.bdc').css("background-color","#fbf3c5");
+            $bgImg.attr('src','img/bgimg3.png');
+            $html.css("background-color","#fbf3c5");
+            $bgc.css("background-color","#fbf3c5");
     });
 }
-
-
 
 //点击更换图标事件
 function changeTypeIcon(){

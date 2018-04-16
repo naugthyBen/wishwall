@@ -14,15 +14,17 @@
 				<div class="targetto"><span class="targetf">Form: </span><span class="targetip"><input  type="text"></span><span class="hidewishuser">匿</span></div>
 			</form>
 		</div>
-		<div class="choosedhide">你已选择匿名发布</div>
-		<div class="canceledhide">你已取消匿名发布</div>
+		<div class="choosedniming">你已选择匿名发布</div>
+		<div class="cancelniming">你已取消匿名发布</div>
+		<div class="chooseduncom">你已选择不允许评论</div>
+		<div class="canceluncom">你已取消不允许评论</div>
 		<div class="wishcont">
 			<form action="" method="">
 				<textarea name="" id="" cols="50" rows="10" value="快来许个愿望吧"></textarea>
 			</form>
 		</div>
 		<div class="hottopic">
-			<div style="text-align: left;">#热门话题#<span><img align="right" src="img/comment.png" alt=""></span></div>
+			<div class="wishhottopic" style="text-align: left;">#热门话题#<span class="uncomment"><img align="right" src="img/comment.png" alt=""></span></div>
 		</div>
 		<div class="wishtype">
 			<div class="wishtype_message"><img src="img/bare.png" alt=""><span>我要表白</span></div>
@@ -39,33 +41,6 @@
 		<div class="uncom"><div class="quanquan"></div><div class="exp">选择是否允许他人评论你的愿望，默认允许</div></div>
 		<div class="getit">我知道了</div>
 	</div>
-	
-	<!-- <div>
-		<form action="" method="" id="sentForm">
-			<label for="to" class="to">To:</label>
-			<input name="message.toyou" id="to" autofocus="autofocus" type="text">
-			<br>
-			<label for="from" class="from">From:</label>
-			<input name="message.fromname" id="from" value="兮兮" type="text">
-			<br>
-
-			<textarea name="message.content" rows="5" cols="22"></textarea><br>
-
-			<input name="message.mtype" id="a" value="pray" class="radio" type="radio">
-			<label for="a" id="sayhi_label">我要表白</label><br>
-			<input name="message.mtype" id="b" value="sayhi" class="radio" type="radio">
-			<label for="b" id="pray_label">我要祝福</label><br>
-			<input name="message.mtype" id="c" value="complain" class="radio" type="radio">
-			<label for="c" id="complain_label">我要吐槽</label><br>
-			<input name="message.mtype" id="d" value="pray" class="radio" checked="checked" type="radio">
-			<label for="d" id="default_label">默认许愿</label><br>
-
-			<div id="sendMess">
-				<input value="许愿" onclick="return confirm();" type="button">
-			</div>
-		</form>
-	</div> -->
-
 </body>
 <script src="jquery.js"></script>
 <script src="index.js"></script>
@@ -76,8 +51,8 @@
     }
     localStorage.pageLoadCount = parseInt(localStorage.pageLoadCount)+1;
 }
-// if(localStorage.pageLoadCount>0){
-//   $('.mengban').hide();
-// }
+if(localStorage.pageLoadCount>0){
+  $('.mengban').hide();
+}
 </script>
 </html>

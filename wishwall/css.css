@@ -238,6 +238,9 @@ section{
 .submitMessage{
 	flex: 2;
 }
+/* .inp{
+	display: none;
+} */
 .inp button{
 	background-color: transparent;
 	width: 1rem;
@@ -248,7 +251,20 @@ section{
 .submitMessage img{
 	width: 2rem;
 }
-
+.showuncom{
+	position: fixed;
+	width: 100%;
+	height: 3rem;
+	bottom: 0;
+	display: none;
+	background-color: #ffce63;
+}
+.hintuncom{
+	width: 100%;
+	margin: auto;
+	line-height: 3rem;
+	text-align: center;
+}
 
 
 /* 是否删除确认框 */
@@ -439,7 +455,7 @@ section{
 	width: 15rem;
 	font-size: 5rem;
 }
-.choosedhide,.canceledhide{
+.choosedniming,.chooseduncom,.cancelniming,.canceluncom{
 	position: fixed;
 	display: none;
 	top: 3rem;
@@ -459,7 +475,7 @@ section{
 	top:0;
 	left:0;
 	z-index:99;
-	display:none;
+	/* display:none; */
 }
 .niming{
 	position: absolute;

@@ -38,13 +38,13 @@ function indexContentchange(){
     })
 }
 //删除评论
-var fn;
+let fn;
 let $delif=$(".delif");
 let $delBox=$(".delBox");
 function clickdel(){
     var delt= $(".del").bind("click",function (){
-        delif.show();
-        delBox.show();
+        $delif.show();
+        $delBox.show();
         _self=this;
         return fn =function del(){
             $(_self).parent().parent(".bgc").hide();
@@ -53,14 +53,14 @@ function clickdel(){
 }
 function nodel(){
     $(".nodel").bind('click', function() {
-        delif.hide();
-        delBox.hide();
+        $delif.hide();
+        $delBox.hide();
     });
 }
 function yesdel(){
     $(".yesdel").bind('click',function (){
-       delif.hide();
-       delBox.hide();
+       $delif.hide();
+       $delBox.hide();
        console.log(fn)
        fn();
     });
@@ -71,13 +71,13 @@ function yesdel(){
 function hideuser(){
     let $hideformbox=$(".hideformbox");
     let $hideuser=$(".hideuser");
-    hideuser.bind('click', function() {
-        if(hideformbox.is(":visible")){
-            hideformbox.hide();
-            hideuser.removeClass("hidename");           
+    $hideuser.bind('click', function() {
+        if($hideformbox.is(":visible")){
+            $hideformbox.hide();
+            $hideuser.removeClass("hidename");           
         }else{
-            hideformbox.show();
-            hideuser.addClass("hidename");  
+            $hideformbox.show();
+            $hideuser.addClass("hidename");  
         }
     });
 }
